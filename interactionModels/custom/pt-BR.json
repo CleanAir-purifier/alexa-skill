@@ -1,0 +1,278 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "clean air",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "GetPurifierIntent",
+          "slots": [
+            {
+              "name": "id",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "informações sobre purificador {id}",
+            "o status do purificador {id}",
+            "como tá o purificador {id}",
+            "o estado do purificador {id}"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "GetSensorIntent",
+          "slots": [
+            {
+              "name": "id",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "o sensor {id}",
+            "como está o sensor {id}",
+            "o status do sensor {id}",
+            "informações do sensor {id}",
+            "o estado do sensor {id}"
+          ]
+        },
+        {
+          "name": "ChangeSensorNameIntent",
+          "slots": [
+            {
+              "name": "id",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "name",
+              "type": "AMAZON.Room",
+              "samples": [
+                "{name}",
+                "O novo nome é {name}",
+                "Vai ser {name}"
+              ]
+            }
+          ],
+          "samples": [
+            "mudar o nome do sensor {id} para {name}",
+            "mudar o nome do sensor {id} ",
+            "trocar o nome do sensor {id} para {name}",
+            "quero trocar o nome do sensor {id} "
+          ]
+        },
+        {
+          "name": "PowerOnPurifierIntent",
+          "slots": [
+            {
+              "name": "id",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "ele é {id}",
+                "o id é {id} ",
+                "{id}"
+              ]
+            }
+          ],
+          "samples": [
+            "ligar o purificador {id}",
+            "ligue o purificador {id}"
+          ]
+        },
+        {
+          "name": "PowerOffPurifierIntent",
+          "slots": [
+            {
+              "name": "id",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "desligue o purificador {id}",
+            "desligar o purificador {id}"
+          ]
+        },
+        {
+          "name": "PowerOnSensorIntent",
+          "slots": [
+            {
+              "name": "id",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "ligar o sensor {id}",
+            "ligue o sensor {id}"
+          ]
+        },
+        {
+          "name": "PowerOffSensorIntent",
+          "slots": [
+            {
+              "name": "id",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "desligar o sensor {id}",
+            "desligue o sensor {id}"
+          ]
+        }
+      ],
+      "types": []
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "GetPurifierIntent",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.715719425155"
+          },
+          "slots": [
+            {
+              "name": "id",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {}
+            }
+          ],
+          "delegationStrategy": "ALWAYS"
+        },
+        {
+          "name": "GetSensorIntent",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.1227678748023"
+          },
+          "slots": [
+            {
+              "name": "id",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {}
+            }
+          ]
+        },
+        {
+          "name": "ChangeSensorNameIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "id",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {}
+            },
+            {
+              "name": "name",
+              "type": "AMAZON.Room",
+              "elicitationRequired": true,
+              "confirmationRequired": true,
+              "prompts": {
+                "confirmation": "Confirm.Slot.705806263213.317499449437",
+                "elicitation": "Elicit.Slot.705806263213.317499449437"
+              }
+            }
+          ]
+        },
+        {
+          "name": "PowerOnPurifierIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "id",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.461125101000.711829024896"
+              }
+            }
+          ]
+        },
+        {
+          "name": "PowerOffSensorIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "id",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {}
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Confirm.Intent.715719425155",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "O purificador é de id {id} , certo?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.1227678748023",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "O sensor é de id {id} , certo?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.705806263213.317499449437",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Qual o novo nome para o sensor {id} ?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.705806263213.317499449437",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "O novo nome para o sensor {id} é {name} , correto?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.461125101000.711829024896",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Por favor, fale o id do purificador."
+          }
+        ]
+      }
+    ]
+  },
+  "version": "13"
+}

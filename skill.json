@@ -1,0 +1,50 @@
+{
+  "manifest": {
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "arn:aws:lambda:us-east-1:265626230481:function:aeedc1db-ce47-47a7-86a5-468ac1fe9cbe:Release_0"
+        },
+        "interfaces": [],
+        "regions": {
+          "NA": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:us-east-1:265626230481:function:aeedc1db-ce47-47a7-86a5-468ac1fe9cbe:Release_0"
+            }
+          },
+          "EU": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:eu-west-1:265626230481:function:aeedc1db-ce47-47a7-86a5-468ac1fe9cbe:Release_0"
+            }
+          },
+          "FE": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:us-west-2:265626230481:function:aeedc1db-ce47-47a7-86a5-468ac1fe9cbe:Release_0"
+            }
+          }
+        }
+      }
+    },
+    "manifestVersion": "1.0",
+    "publishingInformation": {
+      "category": "KNOWLEDGE_AND_TRIVIA",
+      "locales": {
+        "pt-BR": {
+          "description": "Pergunte por Fatos Espaciais e aprenda sobre o que interessa, como matéria escura.\n\nA skill Fatos Espaciais proporciona divertimento para toda família e certamente fará você mais inteligente. \n\nPara iniciar, apenas fale \"Alexa, iniciar Fatos Espaciais\" ou \"Alexa, abrir Fatos Espaciais\" para receber um fato\".\n\nA qualquer momento, você pode dizer \"Alexa, pare\"",
+          "examplePhrases": [
+            "Alexa abrir fatos espaciais",
+            "Alexa me conta um fato",
+            "Alexa me conta um fato sobre o espaço"
+          ],
+          "keywords": [
+            "espaço",
+            "fatos",
+            "trivia"
+          ],
+          "name": "clean air",
+          "summary": "Aprenda fatos divertidos sobre o espaço."
+        }
+      }
+    }
+  }
+}
