@@ -43,8 +43,8 @@ const LaunchRequestHandler = {
   handle(handlerInput) {
     console.log('Inside LaunchRequestHandler');
     return handlerInput.responseBuilder
-      .speak('Welcome to my ABC skill')
-      .reprompt('Welcome to my ABC skill')
+      .speak('Bem vindo a Clean Air?')
+      .reprompt('O que deseja?')
       .getResponse();
   },
 };
@@ -159,6 +159,95 @@ const ChangeNameHandler = {
         });   
     },
 }
+
+const TurnOnPurifierHandler = {
+  canHandle(handlerInput) {
+      
+    const request = handlerInput.requestEnvelope.request;
+    // checks request type
+    return request.type === 'LaunchRequest'
+      || (request.type === 'IntentRequest'
+        && request.intent.name === 'PowerOnPurifierIntent');
+  },
+  handle(handlerInput) {
+        const theNumber = handlerInput.requestEnvelope.request.intent.slots.id.value;
+        const URL = 'https://clean-air-api.herokuapp.com/commands_purifier/';
+        var speakOutput = theNumber ;
+        const method = URL + theNumber;
+        var data = {'id' : theNumber, 'active' : true};
+        
+        return new Promise((resolve, reject) => {
+            postHttp(URL, JSON.stringify(data), method);
+        });   
+  },
+};
+
+const TurnOffPurifierHandler = {
+  canHandle(handlerInput) {
+      
+    const request = handlerInput.requestEnvelope.request;
+    // checks request type
+    return request.type === 'LaunchRequest'
+      || (request.type === 'IntentRequest'
+        && request.intent.name === 'PowerOffPurifierIntent');
+  },
+  handle(handlerInput) {
+        const theNumber = handlerInput.requestEnvelope.request.intent.slots.id.value;
+        const URL = 'https://clean-air-api.herokuapp.com/commands_purifier/';
+        var speakOutput = theNumber ;
+        const method = URL + theNumber;
+        var data = {'id' : theNumber, 'active' : false};
+        
+        return new Promise((resolve, reject) => {
+            postHttp(URL, JSON.stringify(data), method);
+        });   
+  },
+};
+
+
+const TurnOnSensorHandler = {
+  canHandle(handlerInput) {
+      
+    const request = handlerInput.requestEnvelope.request;
+    // checks request type
+    return request.type === 'LaunchRequest'
+      || (request.type === 'IntentRequest'
+        && request.intent.name === 'PowerOnSensorIntent');
+  },
+  handle(handlerInput) {
+        const theNumber = handlerInput.requestEnvelope.request.intent.slots.id.value;
+        const URL = 'https://clean-air-api.herokuapp.com/commands_mobile_sensor/';
+        var speakOutput = theNumber ;
+        const method = URL + theNumber;
+        var data = {'id' : theNumber, 'active' : true};
+        
+        return new Promise((resolve, reject) => {
+            postHttp(URL, JSON.stringify(data), method);
+        });   
+  },
+};
+
+const TurnOffSensorHandler = {
+  canHandle(handlerInput) {
+      
+    const request = handlerInput.requestEnvelope.request;
+    // checks request type
+    return request.type === 'LaunchRequest'
+      || (request.type === 'IntentRequest'
+        && request.intent.name === 'PowerOffSensorIntent');
+  },
+  handle(handlerInput) {
+        const theNumber = handlerInput.requestEnvelope.request.intent.slots.id.value;
+        const URL = 'https://clean-air-api.herokuapp.com/commands_mobile_sensor/';
+        var speakOutput = theNumber ;
+        const method = URL + theNumber;
+        var data = {'id' : theNumber, 'active' : false};
+        
+        return new Promise((resolve, reject) => {
+            postHttp(URL, JSON.stringify(data), method);
+        });   
+  },
+};
 
 const HelpHandler = {
   canHandle(handlerInput) {
@@ -345,6 +434,10 @@ exports.handler = skillBuilder
     GetPurifierHandler,
     ChangeNameHandler,
     GetSensorHandler,
+    TurnOnSensorHandler,
+    TurnOffSensorHandler,
+    TurnOnPurifierHandler,
+    TurnOffPurifierHandler,
     HelpHandler,
     ExitHandler,
     FallbackHandler,
